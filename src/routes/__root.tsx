@@ -9,6 +9,10 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { SmoothScroll } from "@/components/smooth-scroll";
+import { CursorGlow } from "@/components/cursor-glow";
 
 function NotFoundComponent() {
   return (
@@ -72,14 +76,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Zybrio — AI-Powered Software Engineering" },
+      { name: "description", content: "Zybrio engineers premium AI-powered software and digital products for ambitious teams." },
+      { name: "author", content: "Zybrio" },
+      { property: "og:title", content: "Zybrio — AI-Powered Software Engineering" },
+      { property: "og:description", content: "Premium AI software, cloud engineering, and digital products." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@Zybrio" },
     ],
     links: [
       {
@@ -113,7 +117,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <SmoothScroll />
+      <CursorGlow />
+      <div className="relative min-h-screen flex flex-col bg-background text-foreground">
+        <SiteHeader />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <SiteFooter />
+      </div>
     </QueryClientProvider>
   );
 }
