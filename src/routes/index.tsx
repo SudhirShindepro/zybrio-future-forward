@@ -1,26 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/sections/hero";
+import { Services } from "@/components/sections/services";
+import { Process } from "@/components/sections/process";
+import { Portfolio } from "@/components/sections/portfolio";
+import { Tech } from "@/components/sections/tech";
+import { AISection } from "@/components/sections/ai";
+import { Testimonials } from "@/components/sections/testimonials";
+import { CTA } from "@/components/sections/cta";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Zybrio — AI-Powered Software Engineering" },
+      { name: "description", content: "Premium AI-powered software studio building intelligent platforms, custom products and cloud systems for ambitious teams." },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <>
+      <Hero />
+      <Services />
+      <Process />
+      <Portfolio />
+      <AISection />
+      <Tech />
+      <Testimonials />
+      <CTA />
+    </>
+  );
 }
